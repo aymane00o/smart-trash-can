@@ -6,7 +6,7 @@ int mindist = 5;
 // constants won't change
 const int TRIG_PIN  = 6;  // Arduino pin connected to Ultrasonic Sensor's "TRIG" pin
 const int ECHO_PIN  = 7;  // Arduino pin connected to Ultrasonic Sensor's "ECHO" pin
-const int SERVO_PIN = 9; // Arduino pin connected to Servo Motor's pin (PWM)
+const int SERVO_PIN = 9; // Arduino pin connected to Servo Motor's pin (PWM ~)
 const int DISTANCE_THRESHOLD = 50; // cm
 AF_DCMotor m1(1);//define motor 1 as m1
 AF_DCMotor m4(4);//define motor 4 as m4
@@ -28,8 +28,8 @@ void setup() {
   m1.setSpeed(0);//motor 1 is turned off to turn on change 0, to 255 
   m4.setSpeed(0); //motor 4 is turned off 
   ///////////////////////////////////////////////////////////////
-   pinMode(trigPin, OUTPUT);  //On défini Trig comme une sortie
-  pinMode(echoPin, INPUT);   //On défini Echo comme une entrée
+   pinMode(trigPin, OUTPUT);  //We define Trig as an output
+  pinMode(echoPin, INPUT);   //We define Trig as an input
  ///////////////////////////////////////////////////////////////
   Serial.begin (9600);       // initialize serial port
   pinMode(TRIG_PIN, OUTPUT); // set arduino pin to output mode
@@ -65,11 +65,6 @@ void loop() {
   m4.run(BACKWARD );
   m4.setSpeed(speed(60));
   delay(3000);
-
- 
-
-  
- delay(3000);
   m1.run(RELEASE);
   Serial.println("M1 RELEASE");
   m4.run(RELEASE);
